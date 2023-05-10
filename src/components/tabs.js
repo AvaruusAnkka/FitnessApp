@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Home from '../pages/home'
 import History from '../pages/history'
-import Header from '../components/Header'
-import Profile from '../pages/Profile'
-import InfoScreen from '../pages/InfoScreen'
+import Header from './header'
+import Profile from '../pages/profile'
+import InfoScreen from '../pages/info'
 
 const Tab = createBottomTabNavigator()
 
@@ -46,22 +46,22 @@ export default function Tabs() {
         })}
       >
         <Tab.Screen
-          name="Home"
+          name='Home'
           component={Home}
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="History"
+          name='History'
           component={History}
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Profile"
+          name='Profile'
           component={Profile}
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Info"
+          name='Info'
           component={InfoScreen}
           options={{ headerShown: false }}
         />

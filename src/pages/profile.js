@@ -1,60 +1,65 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react'
 import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
   View,
   Text,
-  Image,
   TouchableOpacity,
   Switch,
-  TextInput,
-} from "react-native";
-import FeatherIcon from "react-native-vector-icons/Feather";
-import { PolarContext } from "../context/polarContext";
-
-
+} from 'react-native'
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import { PolarContext } from '../context/polarContext'
 
 export default function Profile() {
-
-  const [text, setText] = React.useState("Useless Text");
-  const [expanded, setExpanded] = useState(false)
-
-  const { userData } = useContext(PolarContext);
-  console.log('Settings: ', userData['first-name']);
+  const { userData } = useContext(PolarContext)
+  console.log('Settings: ', userData['first-name'])
 
   const [form, setForm] = useState({
-  genders: 'GENDER',
-  heights: 'HEIGHT (CM)',
-  weights: 'WEIGHT (KG)',
-  birthday: 'BIRTHDATE',
+    genders: 'GENDER',
+    heights: 'HEIGHT (CM)',
+    weights: 'WEIGHT (KG)',
+    birthday: 'BIRTHDAY',
+  })
 
-
-
-  });
-
-  
   const SECTIONS = [
     {
-      header: "Stats",
+      header: 'Stats',
       items: [
-        { id: "genders", icon: "users", label: userData['gender'], type: 'select'},
-        { id: "heights", icon: "crop", label: userData['height'], type: 'select'},
-        { id: "weights", icon: "slack", label: userData['weight'], type: 'select'},
-        { id: "birthday", icon: "gift", label: userData['birthdate'], type: 'select'},
+        {
+          id: 'genders',
+          icon: 'users',
+          label: userData['gender'],
+          type: 'select',
+        },
+        {
+          id: 'heights',
+          icon: 'crop',
+          label: userData['height'],
+          type: 'select',
+        },
+        {
+          id: 'weights',
+          icon: 'slack',
+          label: userData['weight'],
+          type: 'select',
+        },
+        {
+          id: 'birthday',
+          icon: 'gift',
+          label: userData['birthday'],
+          type: 'select',
+        },
       ],
     },
     {
-      header: "User ID",
-      items: [
-        { id: "lll", icon: "globe", label: userData['polar-user-id'], }
-      ],
+      header: 'User ID',
+      items: [{ id: 'lll', icon: 'globe', label: userData['polar-user-id'] }],
     },
-  ];
-
+  ]
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#f6f6f6" }}>
+    <SafeAreaView style={{ backgroundColor: '#f6f6f6' }}>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Profile</Text>
@@ -63,19 +68,18 @@ export default function Profile() {
         </View>
 
         <View style={styles.profile}>
-          <Text style={styles.profileName}> {userData['first-name']} {userData['last-name']}</Text>
+          <Text style={styles.profileName}>
+            {' '}
+            {userData['first-name']} {userData['last-name']}
+          </Text>
 
           <Text style={styles.profileEmail}>Your Email</Text>
 
-          <TouchableOpacity
-            onPress={() => { 
-            }}
-          >
-            
+          <TouchableOpacity onPress={() => {}}>
             <View style={styles.profileAction}>
               <Text style={styles.profileActionText}>Change Email</Text>
 
-              <FeatherIcon color="#fff" name="edit" size={16} />
+              <FeatherIcon color='#fff' name='edit' size={16} />
             </View>
           </TouchableOpacity>
         </View>
@@ -96,13 +100,13 @@ export default function Profile() {
                     ]}
                   >
                     <TouchableOpacity
-                      onPress={() => { 
+                      onPress={() => {
                         // handle onPress
                       }}
                     >
                       <View style={styles.row}>
                         <FeatherIcon
-                          color="#616161"
+                          color='#616161'
                           name={icon}
                           style={styles.rowIcon}
                           size={22}
@@ -112,35 +116,35 @@ export default function Profile() {
 
                         <View style={styles.rowSpacer} />
 
-                        {type === "select" && (
+                        {type === 'select' && (
                           <Text style={styles.rowValue}>{form[id]}</Text>
                         )}
 
-                        {type === "toggle" && (
+                        {type === 'toggle' && (
                           <Switch
                             onChange={(val) => setForm({ ...form, [id]: val })}
                             value={form[id]}
                           />
                         )}
 
-                        {(type === "select" || type === "link") && (
+                        {(type === 'select' || type === 'link') && (
                           <FeatherIcon
-                            color="#ababab"
-                            name="chevron-right"
+                            color='#ababab'
+                            name='chevron-right'
                             size={22}
                           />
                         )}
                       </View>
                     </TouchableOpacity>
                   </View>
-                );
+                )
               })}
             </View>
           </View>
         ))}
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -156,15 +160,15 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 14,
-    fontWeight: "600",
-    color: "#a7a7a7",
-    textTransform: "uppercase",
+    fontWeight: '600',
+    color: '#a7a7a7',
+    textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
   sectionBody: {
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: "red",
+    borderColor: 'red',
   },
   header: {
     paddingLeft: 24,
@@ -173,23 +177,23 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: "700",
-    color: "#1d1d1d",
+    fontWeight: '700',
+    color: '#1d1d1d',
     marginBottom: 6,
   },
   subtitle: {
     fontSize: 15,
-    fontWeight: "500",
-    color: "#929292",
+    fontWeight: '500',
+    color: '#929292',
   },
   profile: {
     padding: 16,
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "#fff",
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: "red",
+    borderColor: 'red',
   },
   profileAvatar: {
     width: 60,
@@ -199,55 +203,55 @@ const styles = StyleSheet.create({
   profileName: {
     marginTop: 12,
     fontSize: 20,
-    fontWeight: "600",
-    color: "#090909",
+    fontWeight: '600',
+    color: '#090909',
   },
   profileEmail: {
     marginTop: 6,
     fontSize: 16,
-    fontWeight: "400",
-    color: "#848484",
+    fontWeight: '400',
+    color: '#848484',
   },
   profileAction: {
     marginTop: 12,
     paddingVertical: 10,
     paddingHorizontal: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
     borderRadius: 12,
   },
   profileActionText: {
     marginRight: 8,
     fontSize: 15,
-    fontWeight: "600",
-    color: "#fff",
+    fontWeight: '600',
+    color: '#fff',
   },
   row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     paddingRight: 24,
     height: 50,
   },
   rowWrapper: {
     paddingLeft: 24,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderTopWidth: 2,
-    borderColor: "#e3e3e3",
+    borderColor: '#e3e3e3',
   },
   rowIcon: {
     marginRight: 12,
   },
   rowLabel: {
     fontSize: 17,
-    fontWeight: "500",
-    color: "#000",
+    fontWeight: '500',
+    color: '#000',
   },
   rowValue: {
     fontSize: 17,
-    color: "#616161",
+    color: '#616161',
     marginRight: 4,
   },
   rowSpacer: {
@@ -261,9 +265,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     padding: 10,
   },
-  text:{
-    marginTop:20
-  }
-
-
-});
+  text: {
+    marginTop: 20,
+  },
+})

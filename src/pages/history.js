@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native'
 
-import Graph from './graph'
-import HistoryForGraph from './historyforgraph'
+import Graph from '../components/graph'
+import HistoryForGraph from '../components/historyList'
 
 export default function History() {
   return (

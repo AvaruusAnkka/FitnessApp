@@ -1,11 +1,11 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { PolarContextProvider } from './context/polarContext'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { PolarContextProvider } from "./src/context/polarContext";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Tabs from './components/tabs'
+import Tabs from "./src/components/tabs";
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -16,5 +16,5 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PolarContextProvider>
-  )
+  );
 }
