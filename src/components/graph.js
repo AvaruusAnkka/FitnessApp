@@ -1,10 +1,10 @@
 import React from 'react'
 import { LineChart } from 'react-native-chart-kit'
 import { useContext } from 'react'
-import { PolarContext } from '../context/polarContext.js'
-import { Text, StyleSheet, Dimensions } from 'react-native'
+import { PolarContext } from '../context/polarContext'
+import { StyleSheet, Dimensions } from 'react-native'
 
-import IntakeStorage from '../class/intakeStorage.js'
+import IntakeStorage from '../utils/intakeStorage'
 
 const Graph = () => {
   const { exerciseData } = useContext(PolarContext)
@@ -51,7 +51,10 @@ const Graph = () => {
               color: (opacity = 255) => `rgba(51, 255, 255, ${opacity})`,
             },
             {
-              data: [2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500],
+              data: [
+                2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500,
+                2500, 2500, 2500, 2500,
+              ],
               color: (opacity = 255) => `rgba(102, 240, 0, ${opacity})`,
               withDots: true,
             },
