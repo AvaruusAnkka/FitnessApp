@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 
 import Enter from '../components/enter'
-import HeartBeat from '../components/heartBeats'
+import HeartBeat from '../components/heartBeat/index'
 import Reset from '../components/reset'
 
 export default function Home() {
