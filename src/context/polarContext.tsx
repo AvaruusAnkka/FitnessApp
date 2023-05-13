@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Router from '../utils/router'
+import { getUser, getExercise } from '../lib/axios'
 
 import Loading from '../pages/loading'
 
@@ -28,13 +28,10 @@ const PolarContextProvider: React.FC<{ children: any }> = ({ children }) => {
 
     const fetchData = async () => {
       try {
-        const [user, exercises] = await Promise.all([
-          Router.getUser(),
-          Router.getExercises(),
-        ])
+        const [user, exercises] = await Promise.all([getUser(), getExercise()])
         if (!didCancel) {
-          setUserData(user)
-          setExerciseData(exercises)
+          setUserData(user.data)
+          setExerciseData(exercises.data)
           setLoading(false)
         }
       } catch (e) {
